@@ -1,7 +1,7 @@
 import React,  { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateCost } from '../../ducks/reducer';
+import { updateCost, updateDownPayment } from '../../ducks/reducer';
 
 class WizardSix extends Component {
 
@@ -17,7 +17,7 @@ class WizardSix extends Component {
                     <p>How much are you putting down as a down payment?</p> <br />
                         
                         
-                        <input type="text" placeholder="amount" onChange={ e => this.props.updateCost(e.target.value) }/>                    
+                        <input type="text" placeholder="amount" onChange={ e => this.props.updateDownPayment(e.target.value) }/>                    
                         
                     
                     <Link to="/wSeven"><button className="margin-btn"> Next </button></Link>
@@ -29,8 +29,9 @@ class WizardSix extends Component {
 
 const mapStateToProps = state => {
     return {
-        cost: state.cost
+        cost: state.cost,
+        downPayment: state.downPayment
     }
 }
 
-export default connect(mapStateToProps, { updateCost }) (WizardSix);
+export default connect(mapStateToProps, { updateCost, updateDownPayment }) (WizardSix);
